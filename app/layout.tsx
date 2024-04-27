@@ -18,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-nextposter px-[185px] text-white bg-black1 select-none *:w-[calc(1600px-128px)] *:px-[64px]`}>
-        <HeaderNav/>
+        <div className="sticky top-0 z-50">
+          <HeaderNav/>
+        </div>
         <main>
         {children}
         </main>

@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { Key, useState } from "react";
+import { useEffect, useState } from "react";
 import CardOne from "./ui/cards/card-one";
 import CardThree from "./ui/cards/card-three";
 import CardTow from "./ui/cards/card-two";
@@ -15,6 +15,12 @@ type CardInfo= {
       progress?: string,
       type: string,
       id: string,
+}
+type Tab= {
+      name: string,
+      active:boolean,
+      cards: CardInfo[] | any,
+      id: number,
 }
 export default function Home() {
   const [cardInfoArr] = useState([
@@ -70,30 +76,36 @@ export default function Home() {
     },
   ]);
   const [currentAddEndNum, setCurrentAddEndNum] = useState(0);
-  const [tabCardsArr,setTabCardsArr]:[CardInfo[],Function]= useState([])
   const [tabs, setTabs] = useState([
     {
       id: 1,
       name: "Syntax",
       active: true,
+      cards:[],
     },
     {
       id: 2,
       name: "Guided Project",
       active: false,
+      cards:[],
     },
     {
       id: 3,
       name: "Concept Learning",
       active: false,
+      cards:[],
     },
     {
       id: 4,
       name: "Teaser",
       active: false,
+      cards:[],
     },
   ]);
 
+  useEffect(() => {
+    handleGetTabCardsArr(1)
+  },[])
   const handlePageChange = (type: "add" | "reduce") => {
     switch (type) {
       case "add":
@@ -106,31 +118,26 @@ export default function Home() {
         break;
     }
   };
-  const handleGetTabCardsArr = () => {
-
-    setTabCardsArr((oldArr:CardInfo[]) =>{
-        if(oldArr.length === 0){
-          return cardInfoArr
+  const handleGetTabCardsArr = (id:number) => {
+    const randomNum = Math.floor(Math.random() * 4);
+      const newArr:CardInfo[] = Array.from(cardInfoArr).slice(randomNum || 1).map((item:CardInfo)=>{
+        item.id = `${item.id}-${Math.random()}`
+        return item
+      })
+      
+      const newTabs:Tab[] = tabs.map((item:Tab)=>{
+        // console.log("newTabs------",item.id , id)
+        if(item.id === id){
+          return {...item, active: true,cards:newArr.length === 0 ? cardInfoArr : newArr}
         }else{
-          const newArr:CardInfo[] = Array.from(oldArr).slice(Math.floor(Math.random() * 4)).map((item:CardInfo)=>{
-            item.id = `${item.id}-${Math.random()}`
-            return item
-          })
-          return newArr
+          return {...item, active: false,cards:[]}
         }
+      })
+      // console.log("newTabs",newTabs)
+      setTabs(newTabs);
+
+      
       }
-    )
-  }
-  const handleChangeTab = (id:number) => {
-    handleGetTabCardsArr();
-    setTabs(tabs.map(item=>{
-      if(item.id === id){
-        return {...item, active: true}
-      }else{
-        return {...item, active: false}
-      }
-    }))
-  }
   return (
     <>
       {/* Trending Now */}
@@ -189,12 +196,12 @@ export default function Home() {
       <div className="mt-8">
         {/* 导航器 */}
         <ul className="py-4 flex items-center space-x-16 text-textgray border-t border-b border-textgray *:font-[250] *:text-[16px]  ">
-          {tabs.map((tab) => (
+        {tabs.map((tab) => (
             <li
               key={tab.id}
               className={clsx("hover:text-textwhite  font-[700]", {'text-textwhite': tab.active})}
             >
-              <button onClick={()=>handleChangeTab(tab.id)}>{tab.active ? `</${tab.name}>` : tab.name}</button>
+              <button onClick={()=>handleGetTabCardsArr(tab.id)}>{tab.active ? `</${tab.name}>` : tab.name}</button>
             </li>
           ))}
         </ul>
@@ -203,8 +210,8 @@ export default function Home() {
           <div
             className={`min-h-[320px] grid grid-cols-3 gap-x-[48px] mt-10 *:mt-8`}
           >
-            {tabCardsArr &&
-              tabCardsArr.map((cardInfo: CardInfo,index:number) => {
+            {tabs &&
+              tabs.filter((item:Tab)=>item.cards && item.cards.length>0)[0]?.cards.map((cardInfo: any,index:number) => {
                 return (
                   <div key={cardInfo.id} className={`opacity-0 motion-safe:animate-zommAnim`} style={{animationDelay:`${index * 0.2}s`}}>
                     {
