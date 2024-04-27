@@ -47,7 +47,6 @@ export default function Home() {
       tags:['Beginner'],
       duration:"36 Hour",
       courseNum:"5 Course",
-      progress:"45% COMPLETED",
       type:"four",
       id:'card3'
     },
