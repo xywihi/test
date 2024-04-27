@@ -3,7 +3,7 @@ import NavLinks from './nav-links';
 
 export default function HeaderNav() {
   return (
-    <div className="flex items-center h-[76px] py-4 bg-black2">
+    <div className="flex items-center h-[76px] py-4 ">
       <Link
         className="mr-6 flex  h-6 items-center"
         href="/"

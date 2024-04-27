@@ -206,7 +206,7 @@ export default function Home() {
           ))}
         </ul>
         {/* 卡片组合 */}
-        <div>
+        <div className="mb-20">
           <div
             className={`min-h-[320px] grid grid-cols-3 gap-x-[48px] mt-10 *:mt-8`}
           >

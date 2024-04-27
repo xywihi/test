@@ -17,15 +17,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-nextposter px-[185px] text-white bg-black1 select-none *:w-[calc(1600px-128px)] *:px-[64px]`}>
-        <div className="sticky top-0 z-50">
-          <HeaderNav/>
+      <body className={`font-nextposter bg-black1`}>
+        <div className="sticky top-0 z-50 bg-black2">
+          <div className="w-[calc(1600px-185px)] m-auto">
+            <HeaderNav/>
+          </div>
         </div>
-        <main>
+        
+        <main className="text-white  select-none w-[calc(1600px-185px)] m-auto">
         {children}
         </main>
-        <footer>
-          <Footer/>
+        <footer className="px-[185px] bg-[black]">
+          <div className="w-[calc(1600px-185px)] m-auto">
+            <Footer />
+          </div>
         </footer>
       </body>
     </html>

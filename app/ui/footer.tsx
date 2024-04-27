@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="bg-[black] text-textwhite h-[560px] w-full pt-[200px]">
+    <div className="text-textwhite h-[560px] w-full pt-[200px]">
       <div className="flex justify-between items-start">
         <p className="font-[700] text-[32px]">
           WEB3 programming <br />
