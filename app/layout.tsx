@@ -19,16 +19,16 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-nextposter bg-black1`}>
         <div className="sticky top-0 z-50 bg-black2">
-          <div className="w-[calc(1600px-185px)] m-auto">
+          <div className="w-[calc(1600px-258px)] m-auto">
             <HeaderNav/>
           </div>
         </div>
         
-        <main className="text-white  select-none w-[calc(1600px-185px)] m-auto">
+        <main className="text-white  select-none w-[calc(1600px-258px)] m-auto">
         {children}
         </main>
         <footer className="px-[185px] bg-[black]">
-          <div className="w-[calc(1600px-185px)] m-auto">
+          <div className="w-[calc(1600px-258px)] m-auto">
             <Footer />
           </div>
         </footer>
