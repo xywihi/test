@@ -1,6 +1,5 @@
 'use client'
 
-import Image from "next/image";
 import clsx from 'clsx';
 import { useState } from "react";
 import CardOne from "./ui/cards/card-one";
@@ -9,7 +8,7 @@ import CardTow from "./ui/cards/card-two";
 import CardFour from "./ui/cards/card-four";
 
 export default function Home() {
-  const [cardInfoArr,setCardInfoArr]=useState([
+  const [cardInfoArr]=useState([
     {
       title:"Introduction to programming",
       description:"This course covers the most basic concepts in programming using Solidity as an example.",
@@ -78,7 +77,7 @@ export default function Home() {
       <p>{"< / Trending Now >"}</p>
       <div className="relative">
         <div id="CardsBox" >
-          <div className={`flex items-center my-8 space-x-12 -translate-x-[${466 * currentAddEndNum}px]`}>
+          <div className={`flex items-center my-8 space-x-12 `} style={{translate:`${-466 * currentAddEndNum}px`}}>
             {
               cardInfoArr && cardInfoArr.map((cardInfo,index)=>{
                 return cardInfo.type === 'one' ? <CardOne key={cardInfo.id} cardInfo={cardInfo}/>
