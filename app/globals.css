@@ -18,12 +18,27 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  
+}
+#CardsBox{
+  overflow-x: auto;
+  & {
+    overflow-x: scroll; /* 允许垂直滚动 */
+    &::-webkit-scrollbar {
+      display: none; /* 对于WebKit浏览器，隐藏滚动条 */
+    }
+    -ms-overflow-style: none; /* 对于IE和Edge，隐藏滚动条 */
+  }
+}
+@font-face {
+  font-family: 'neuemachina';
+  src: url('/fonts/neuemachina.otf') format('truetype');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'nextposter';
+  src: url('/fonts/nextposter.otf') format('truetype');
+  font-style: normal;
 }
 
 @layer utilities {
