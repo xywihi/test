@@ -22,14 +22,14 @@ const nextConfig = withFonts({
   reactStrictMode: true,
   swcMinify: true,
   // distDir: 'build',
-  exportPathMap: async function (
-      defaultPathMap,
-      { dev, dir, outDir, distDir, buildId }
-  ) {
-      return {
-          '/': { page: '/' },
-      };
-  },
+//   exportPathMap: async function (
+//       defaultPathMap,
+//       { dev, dir, outDir, distDir, buildId }
+//   ) {
+//       return {
+//           '/': { page: '/' },
+//       };
+//   },
   images: {
       loader: 'akamai',
       path:'',
