@@ -201,7 +201,7 @@ export default function Home() {
         {/* 卡片组合 */}
         <div>
           <div
-            className={`grid grid-cols-3 gap-x-[48px] mt-10 *:mt-8`}
+            className={`min-h-[320px] grid grid-cols-3 gap-x-[48px] mt-10 *:mt-8`}
           >
             {tabCardsArr &&
               tabCardsArr.map((cardInfo: CardInfo,index:number) => {

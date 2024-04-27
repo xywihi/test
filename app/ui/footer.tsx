@@ -7,10 +7,12 @@ export default function Footer() {
           for Everyone
         </p>
         <div className="flex items-start space-x-16">
-          <ul className="font-[700] text-[14px] flex flex-col space-y-6">
-            <li>All Courses</li>
-            <li>Learning Dashboard</li>
-            <li>Resources Station</li>
+          <ul className="font-[700] text-[14px] ">
+            <li className="relative inline-block after:inline-block hover:after:animate-longAnim hover:cursor-pointer hover:after:w-full after:absolute after:h-[2px] after:bg-[white] after:left-0 after:-bottom-2">All Courses</li>
+            <br/>
+            <li className="relative mt-6 inline-block after:inline-block hover:after:animate-longAnim hover:cursor-pointer hover:after:w-full after:absolute after:h-[2px] after:bg-[white] after:left-0 after:-bottom-2">Learning Dashboard</li>
+            <br/>
+            <li className="relative mt-6 inline-block after:inline-block hover:after:animate-longAnim hover:cursor-pointer hover:after:w-full after:absolute after:h-[2px] after:bg-[white] after:left-0 after:-bottom-2">Resources Station</li>
           </ul>
           <div>
             <p className="font-[700] text-[14px]">Contact us:</p>

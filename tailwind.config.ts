@@ -19,10 +19,15 @@ const config: Config = {
         zommAnim: {
             '0%': { transform: 'scale(0)',opacity: '0' },
             '100%': { transform: 'scale(1)',opacity: '1' },
-          }
+          },
+        longAnim: {
+            '0%': { width: '0', },
+            '100%': { width: '100%' },
+          },
       },
       animation: {
         zommAnim: 'zommAnim .5s ease-in-out forwards',
+        longAnim: 'longAnim .5s ease-in-out forwards',
       }
     },
     colors:{
