@@ -27,7 +27,7 @@ export default function RootLayout({
         <main className="text-white  select-none w-[calc(1600px-258px)] m-auto">
         {children}
         </main>
-        <footer className="px-[185px] bg-[black]">
+        <footer className="bg-[black]">
           <div className="w-[calc(1600px-258px)] m-auto">
             <Footer />
           </div>
