@@ -15,9 +15,19 @@ const config: Config = {
         "test111":"linear-gradient(180deg, #38C1A5 -0.01%, #0891D5 99.99%)",
         "test222":"linear-gradient(180deg, #E0AD38 -0.01%, #EB3E1C 93.39%)"
       },
+      keyframes: {
+        zommAnim: {
+            '0%': { transform: 'scale(0)',opacity: '0' },
+            '100%': { transform: 'scale(1)',opacity: '1' },
+          }
+      },
+      animation: {
+        zommAnim: 'zommAnim .5s ease-in-out forwards',
+      }
     },
     colors:{
       black1:'#030303',
+      black2:'#030303e6',
       textgray:"#676767",
       textwhite:"#F2F2F2",
     },

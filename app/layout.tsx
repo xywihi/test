@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import HeaderNav from "./ui/headernav";
+import Footer from "./ui/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,12 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-nextposter px-[185px] text-white bg-black1`}>
+      <body className={`font-nextposter px-[185px] text-white bg-black1 select-none *:w-[calc(1600px-128px)] *:px-[64px]`}>
         <HeaderNav/>
-        <main className="w-[calc(1600px-128px)] px-[64px] ">
+        <main>
         {children}
         </main>
-        <footer></footer>
+        <footer>
+          <Footer/>
+        </footer>
       </body>
     </html>
   );
