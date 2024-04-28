@@ -1,12 +1,12 @@
 export default function Footer() {
   return (
-    <div className="text-textwhite h-[560px] w-full pt-[200px]">
-      <div className="flex justify-between items-start">
+    <div className="text-textwhite min-h-[560px] w-full p-8 laptop:pt-[200px] pt-[60px] smallPhone:px-4">
+      <div className="grid tablet:grid-cols-2 gap-8 justify-between items-start">
         <p className="font-[700] text-[32px]">
           WEB3 programming <br />
           for Everyone
         </p>
-        <div className="flex items-start space-x-16">
+        <div className="flex justify-end items-start space-x-16">
           <ul className="font-[700] text-[14px] ">
             <li className="relative inline-block after:inline-block hover:after:animate-longAnim hover:cursor-pointer hover:after:w-full after:absolute after:h-[2px] after:bg-[white] after:left-0 after:-bottom-2">All Courses</li>
             <br/>

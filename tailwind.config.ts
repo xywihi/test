@@ -7,6 +7,12 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      'desktop': '1700px',
+      'laptop': '1200px',
+      'tablet': '640px',
+      'smallPhone': '240px',
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -28,6 +34,9 @@ const config: Config = {
       animation: {
         zommAnim: 'zommAnim .5s ease-in-out forwards',
         longAnim: 'longAnim .5s ease-in-out forwards',
+      },
+      overflow: {
+        'hiddenScrollbar1': 'hidden'
       }
     },
     colors:{
@@ -42,7 +51,21 @@ const config: Config = {
     fontFamily: {
       'neuemachina':['neuemachina', 'sans-serif'],
       'nextposter':['nextposter', 'sans-serif'],
-            }
+            },
+    overflow:{
+      hiddenScrollbar:`
+        overflow-x: auto;
+        &:{
+          overflow-x: 'scroll'; /* 允许垂直滚动 */
+          &::-webkit-scrollbar {
+            display: none; /* 对于WebKit浏览器，隐藏滚动条 */
+          }
+          -ms-overflow-style: none; /* 对于IE和Edge，隐藏滚动条 */
+        }
+      `,
+      hiddenScrollbar1: 'hidden'
+    },
+    
   },
   plugins: [],
 };

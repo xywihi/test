@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import NavLinks from './nav-links';
+import Image from "next/image";
 
 export default function HeaderNav() {
   return (
@@ -21,14 +22,14 @@ export default function HeaderNav() {
         </svg>
 
       </Link>
-      <div className="flex grow items-center space-x-2 text-white md:space-x-6">
+      <div className="flex grow items-center space-x-2 text-white">
         <NavLinks />
       </div>
       <Link
-        className="mr-6 flex  h-6 items-center"
+        className="mr-6 flex  h-6 items-center text-textwhite"
         href="/"
       >
-        Avartar
+        <Image width={32} height={32} src="/images/avatar.png" alt="avatar"/>
       </Link>
     </div>
   );

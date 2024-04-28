@@ -1,11 +1,15 @@
 "use client";
 
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CardOne from "./ui/cards/card-one";
 import CardThree from "./ui/cards/card-three";
 import CardTow from "./ui/cards/card-two";
 import CardFour from "./ui/cards/card-four";
+// import HeaderNav from "./ui/headernav";
+// import Footer from "./ui/footer";
+import { ListenScroll } from "./lib/util";
+
 type CardInfo= {
       title?: string,
       description?:string,
@@ -21,6 +25,11 @@ type Tab= {
       active:boolean,
       cards: CardInfo[] | any,
       id: number,
+}
+
+type ScrollState = {
+  isToBottom: boolean,
+  isToTop: boolean,
 }
 export default function Home() {
   const [cardInfoArr] = useState([
@@ -74,6 +83,94 @@ export default function Home() {
       type: "three",
       id: "card4",
     },
+
+
+    {
+      title: "Introduction to programming",
+      description:
+        "This course covers the most basic concepts in programming using Solidity as an example.",
+      tags: ["Beginner"],
+      duration: "36 Hour",
+      courseNum: "5 Course",
+      progress: "45% COMPLETED",
+      type: "one",
+      id: "card5",
+    },
+    // {
+    //   title: "Moonshot 2023 Summer Hackathon",
+    //   description:
+    //     "This course covers the most basic concepts in programming using Solidity as an example.",
+    //   tags: ["All Tracks", "Solidity", "ZK"],
+    //   funcs: [
+    //     {
+    //       name: "Signup",
+    //       date: "4/15 - 6/15",
+    //     },
+    //     {
+    //       name: "Event",
+    //       date: "6/15 - 7/15",
+    //     },
+    //     {
+    //       name: "Grant size",
+    //       date: "200K",
+    //     },
+    //   ],
+    //   type: "tow",
+    //   id: "card6",
+    // },
+    // {
+    //   title: "Web 3.0 Programming Basics",
+    //   description:
+    //     "Basic concepts in programming of Solidity. Topics include: variables, functions, flow control, error handling, data structure.",
+    //   tags: ["Beginner"],
+    //   duration: "36 Hour",
+    //   courseNum: "5 Course",
+    //   type: "four",
+    //   id: "card7",
+    // },
+    // {
+    //   title: "Introduction to programming",
+    //   description:
+    //     "This course covers the most basic concepts in programming using Solidity as an example.",
+    //   tags: ["Beginner"],
+    //   duration: "36 Hour",
+    //   courseNum: "5 Course",
+    //   progress: "45% COMPLETED",
+    //   type: "one",
+    //   id: "card8",
+    // },
+    // {
+    //   title: "Moonshot 2023 Summer Hackathon",
+    //   description:
+    //     "This course covers the most basic concepts in programming using Solidity as an example.",
+    //   tags: ["All Tracks", "Solidity", "ZK"],
+    //   funcs: [
+    //     {
+    //       name: "Signup",
+    //       date: "4/15 - 6/15",
+    //     },
+    //     {
+    //       name: "Event",
+    //       date: "6/15 - 7/15",
+    //     },
+    //     {
+    //       name: "Grant size",
+    //       date: "200K",
+    //     },
+    //   ],
+    //   type: "tow",
+    //   id: "card9",
+    // },
+    // {
+    //   title: "Web 3.0 Programming Basics",
+    //   description:
+    //     "Basic concepts in programming of Solidity. Topics include: variables, functions, flow control, error handling, data structure.",
+    //   tags: ["Beginner"],
+    //   duration: "36 Hour",
+    //   courseNum: "5 Course",
+    //   type: "four",
+    //   id: "card10",
+    // },
   ]);
   const [currentAddEndNum, setCurrentAddEndNum] = useState(0);
   const [tabs, setTabs] = useState([
@@ -102,8 +199,11 @@ export default function Home() {
       cards:[],
     },
   ]);
-
+  const [scrollState, setScrollState] = useState({isToBottom:false,isToTop:true});
+  const ref = useRef<any>(null);
+  let listenScroll =  new ListenScroll(ref.current)
   useEffect(() => {
+    
     handleGetTabCardsArr(1)
   },[])
   const handlePageChange = (type: "add" | "reduce") => {
@@ -138,16 +238,21 @@ export default function Home() {
 
       
       }
+
+
   return (
-    <>
+    <main className="flex px-8 min-h-screen flex-col items-center justify-between bg-black2 smallPhone:px-4">
+      
+      <div className="w-full desktop:w-[calc(1600px-258px)] laptop:w-full  m-auto">
       {/* Trending Now */}
       <div className="mt-[24px]">
         <p className="text-textwhite">{"< / Trending Now >"}</p>
         <div className="relative">
           {/* 卡片组合 */}
-          <div id="CardsBox">
+          <div id="CardsBox" className="transition-all duration-1000 scroll-px-[40px]" ref={ref} onScroll={e=>listenScroll.getIsToBottom(e.target,'hor',(toBottom:ScrollState)=>{setScrollState(toBottom)})}>
             <div
-              className={`flex items-center my-8 space-x-12`}
+              
+              className={`w-max flex items-center my-8 space-x-9`}
               style={{
                 transitionDuration: "0.5s",
                 transform: `translateX(${-currentAddEndNum * 466}px)`,
@@ -174,19 +279,19 @@ export default function Home() {
                 className={clsx(
                   "w-[48px] h-[48px] bg-[black] rounded-full border border-[#676767] text-textwhite hover:bg-[#303030] hover:border-none",
                   {
-                    invisible: currentAddEndNum === 0,
+                    invisible: scrollState.isToTop,
                   }
                 )}
-                onClick={() => handlePageChange("reduce")}
+                onClick={() => listenScroll.handleScrollByDistance((ref.current.children[0].children[0].clientWidth),'hor','top')}
               >{`${"<"}`}</button>
               <button
                 className={clsx(
                   "w-[48px] h-[48px] bg-[black] rounded-full border border-[#676767] text-textwhite hover:bg-[#303030] hover:border-none",
                   {
-                    hidden: currentAddEndNum + 3 === cardInfoArr.length,
+                    hidden: scrollState.isToBottom,
                   }
                 )}
-                onClick={() => handlePageChange("add")}
+                onClick={() => listenScroll.handleScrollByDistance((ref.current.children[0].children[0].clientWidth),'hor','bottom')}
               >{`${">"}`}</button>
             </div>
           </div>
@@ -195,7 +300,7 @@ export default function Home() {
       {/* 导航组合 */}
       <div className="mt-8">
         {/* 导航器 */}
-        <ul className="py-4 flex items-center space-x-16 text-textgray border-t border-b border-textgray *:font-[250] *:text-[16px]  ">
+        <ul className="overflow-x-auto py-4 flex items-center space-x-16 overscroll-contain whitespace-pre text-textgray border-t border-b border-textgray *:font-[250] *:text-[16px]  ">
         {tabs.map((tab) => (
             <li
               key={tab.id}
@@ -206,9 +311,9 @@ export default function Home() {
           ))}
         </ul>
         {/* 卡片组合 */}
-        <div className="mb-20">
+        <div className="mb-10 laptop:mb-20">
           <div
-            className={`min-h-[320px] grid grid-cols-3 gap-x-[48px] mt-10 *:mt-8`}
+            className={`min-h-[320px] grid laptop:grid-cols-3 tablet:grid-cols-2 gap-x-[48px] mt-14 *:mb-8`}
           >
             {tabs &&
               tabs.filter((item:Tab)=>item.cards && item.cards.length>0)[0]?.cards.map((cardInfo: any,index:number) => {
@@ -231,6 +336,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>
+    </div>
+    
+    </main>
   );
 }

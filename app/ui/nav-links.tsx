@@ -31,7 +31,7 @@ export default function NavLinks() {
               },
             )}
           >
-            <p className="hidden md:block text-white">{link.name}</p>
+            <p className="hidden tablet:block text-white">{link.name}</p>
           </Link>
         );
       })}
