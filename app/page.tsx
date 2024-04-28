@@ -300,7 +300,7 @@ export default function Home() {
       {/* 导航组合 */}
       <div className="mt-8">
         {/* 导航器 */}
-        <ul className="overflow-x-auto py-4 flex items-center space-x-16 overscroll-contain whitespace-pre text-textgray border-t border-b border-textgray *:font-[250] *:text-[16px]  ">
+        <ul id="CardsBox" className="overflow-x-auto py-4 flex items-center space-x-16 overscroll-contain whitespace-pre text-textgray border-t border-b border-textgray *:font-[250] *:text-[16px]  ">
         {tabs.map((tab) => (
             <li
               key={tab.id}
