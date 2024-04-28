@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 import withFonts from "next-fonts";
+
 const nextConfig = withFonts({
   webpack(config, options) {
     // config.node = {
@@ -17,6 +18,7 @@ const nextConfig = withFonts({
             },
         ],
     });
+    // config.resolve.alias['@'] = path.join(__dirname, '.', 'public');
     return config;
   },
   reactStrictMode: true,
@@ -32,8 +34,10 @@ const nextConfig = withFonts({
 //   },
   images: {
       loader: 'akamai',
-      path:'',
+      path:'/images',
   }
 });
 
 export default nextConfig;
+
+

@@ -29,10 +29,10 @@ export default function CardThree({cardInfo}:{cardInfo:any}) {
             {/* <svg width="416" height="278" viewBox="0 0 416 278" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="416" height="278" rx="36" fill="#111111"/>
 </svg> */}
-            <div className="h-full absolute top-0 hover:translate-x-[5px] hover:translate-y-[-5px]">
+            <div className="w-full h-full absolute top-0 hover:translate-x-[5px] hover:translate-y-[-5px]">
                 <div className="w-full h-full relative">
                     {/* <Image className="absolute top-[20px] left-[20px] z-10" width={380} height={238} src="/bg1.png" alt="card"/> */}
-                    <Image className="absolute top-[20px] left-[20px] z-10" width={380} height={238} src="/images/bg1.png" alt="card"/>
+                    <img className="absolute top-[20px] left-[20px] z-10 laptop:w-[23.5rem] phone:w-[80vw] smallPhone:w-[82vw]" width={380} height={238} src="/images/bg1.png" alt="card"/>
                     <svg className="w-full max-w-max absolute z-0 top-0 h-auto" width="416" height="278" viewBox="0 0 416 278" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="416" height="278" rx="36" fill="#111111"/>
                     </svg>

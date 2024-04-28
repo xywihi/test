@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import NavLinks from './nav-links';
 import Image from "next/image";
+// import bgIMg from './images/bg-img.png';
 
 export default function HeaderNav() {
   return (
@@ -29,7 +30,7 @@ export default function HeaderNav() {
         className="mr-6 flex  h-6 items-center text-textwhite"
         href="/"
       >
-        <Image width={32} height={32} src="/images/avatar.png" alt="avatar"/>
+        <img width={32} height={32} src='./images/avatar.png' alt="avatar"/>
       </Link>
     </div>
   );

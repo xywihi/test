@@ -11,6 +11,7 @@ const config: Config = {
       'desktop': '1700px',
       'laptop': '1200px',
       'tablet': '640px',
+      'phone': '320px',
       'smallPhone': '240px',
     },
     extend: {
